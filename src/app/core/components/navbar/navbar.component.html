@@ -1,0 +1,34 @@
+<!-- sticky-top posição adesiva podendo se tornar em fixa -->
+<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-primary mb-4 shadow">
+    <a class="navbar-brand" routerLink="/" 
+    title="Escala de Avaliação de Risco para o Desenvolvimento de Lesões Decorrentes do Posicionamento Cirúrgico do Paciente">ELPO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/reports">Relatórios</a>
+        </li> -->
+        <!-- <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/entries">Lançamentos</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Itens Elpo
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/comorbidades">Comorbidades</a>
+            <a class="dropdown-item" routerLink="/idade_pacientes">Idade do Paciente</a>
+            <a class="dropdown-item" routerLink="/pmembros">Posição dos Membros</a>
+            <a class="dropdown-item" routerLink="/ssuportes">Superfície de Suporte</a>
+            <a class="dropdown-item" routerLink="/tpcirurgias">Tempo de Cirurgia</a>
+            <a class="dropdown-item" routerLink="/tpanestesias">Tipo de Anestesia</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/tpposcirurgicas">Tipo Posição Cirúrgica</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>

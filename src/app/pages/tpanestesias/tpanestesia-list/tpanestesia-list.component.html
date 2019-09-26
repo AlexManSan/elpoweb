@@ -1,0 +1,35 @@
+<app-bread-crumb [items]="[{text: 'Lista de Tipo de Anestesia'}]"></app-bread-crumb>
+
+<app-page-header
+  page-title="Lista de Tipo Anestesia"
+  button-text="+ Novo Registro"
+  button-link="new"
+  button-class="btn-success"
+></app-page-header>
+
+  <table class="table table-hover">
+    <thead>
+      <tr class="bg-primary text-light">
+        <th class="text-center border-left">Tipo de Anestesia</th>
+        <th class="text-center border-left">Score</th>
+        <th class="text-center border-left">Ações</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let registro of resources">
+        <td class="border-left">
+          <strong>{{registro.descricao}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <strong>{{registro.score}}</strong>          
+        </td>
+
+        <td class="text-center border-left">
+          <a [routerLink]="[registro.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+          <button (click)="deleteResource(registro)" class="btn btn-outline-danger btn-sm">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
