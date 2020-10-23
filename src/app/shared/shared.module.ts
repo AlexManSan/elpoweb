@@ -17,7 +17,7 @@ import { ServerErrorMessagesComponent } from './components/server-error-messages
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule, 
   ],
   exports: [
     // shared modules

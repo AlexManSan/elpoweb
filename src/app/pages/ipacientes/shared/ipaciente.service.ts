@@ -13,8 +13,9 @@ import { Ipaciente } from './ipaciente.model';
 export class IpacienteService extends BaseResourceService<Ipaciente> {
 
   constructor(protected injector: Injector) {
+    super('http://localhost:8080/idade_pacientes', injector, Ipaciente.fromJson)
     // super('http://localhost:8080/elpo/rest/ipaciente', injector, Ipaciente.fromJson)
     // super('http://localhost:4200/api/elpo/rest/ipaciente', injector, Ipaciente.fromJson)
-    super('http://localhost:4200/api/idade_pacientes', injector, Ipaciente.fromJson)
+    // super('http://localhost:4200/api/idade_pacientes', injector, Ipaciente.fromJson)
    }
 }

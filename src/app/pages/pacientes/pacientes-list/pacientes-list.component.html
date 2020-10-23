@@ -1,0 +1,39 @@
+<app-bread-crumb [items]="[{text: 'Lista de Pacientes'}]"></app-bread-crumb>
+
+<app-page-header
+  page-title="Lista de Pacientes"
+  button-text="+ Novo Registro"
+  button-link="new"
+  button-class="btn-success"
+></app-page-header>
+
+  <table class="table table-hover">
+    <thead>
+      <tr class="bg-primary text-light">
+        <th class="text-center border-left">Nome</th>
+        <th class="text-center border-left">Idade</th>
+        <th class="text-center border-left">Prontuário</th>
+        <th class="text-center border-left">Ações</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let registro of resources">
+        <td class="border-left">
+          <strong>{{registro.nome}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <strong>{{registro.idade}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <strong>{{registro.prontuario}}</strong>          
+        </td>
+
+        <td class="text-center border-left">
+          <a [routerLink]="[registro.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+          <button (click)="deleteResource(registro)" class="btn btn-outline-danger btn-sm">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>

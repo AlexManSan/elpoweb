@@ -9,8 +9,13 @@ const routes: Routes = [
   { path: 'tpanestesias', loadChildren: './pages/tpanestesias/tpanestesias.module#TpanestesiasModule' },
   { path: 'tpcirurgias', loadChildren: './pages/tpcirurgias/tpcirurgias.module#TpcirurgiasModule' },
   { path: 'tpposcirurgicas', loadChildren: './pages/tpposcirurgicas/tpposcirurgicas.module#TpposcirurgicasModule' },
+  { path: 'recomendacoes', loadChildren: './pages/recomendacoes/recomendacoes.module#RecomendacoesModule' },
+  { path: 'elpos', loadChildren: './pages/elpo/elpo.module#ElpoModule' },
+  { path: 'elpos/pesq-elpo', loadChildren: './pages/elpo/elpo.module#ElpoModule' },
+  { path: 'pacientes', loadChildren: './pages/pacientes/pacientes.module#PacientesModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
   
-  { path: '', redirectTo: '/comorbidades', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

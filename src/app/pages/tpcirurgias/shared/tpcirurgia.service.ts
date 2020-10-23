@@ -13,8 +13,9 @@ import { Tpcirurgia } from './tpcirurgia.model';
 export class TpcirurgiaService extends BaseResourceService<Tpcirurgia> {
 
   constructor(protected injector: Injector) {
+      super('http://localhost:8080/tpcirurgias', injector, Tpcirurgia.fromJson)
       // super('http://localhost:8080/elpo/rest/tpcirurgias', injector, Tpcirurgia.fromJson)
     // super('http://localhost:4200/api/elpo/rest/tpcirurgias', injector, Tpcirurgia.fromJson)
-    super('http://localhost:4200/api/tpcirurgias', injector, Tpcirurgia.fromJson)
+    // super('http://localhost:4200/api/tpcirurgias', injector, Tpcirurgia.fromJson)
    }
 }

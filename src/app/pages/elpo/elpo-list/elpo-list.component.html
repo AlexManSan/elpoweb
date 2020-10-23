@@ -1,0 +1,89 @@
+<app-bread-crumb [items]="[{text: 'Lista de regitros ELPO'}]"></app-bread-crumb>
+
+<app-page-header
+  page-title="Lista de registros ELPO"
+  button-text="+ Novo Registro"
+  button-link="new"
+  button-class="btn-success"
+></app-page-header>
+
+  <table class="table table-hover">
+    <thead>
+      <tr class="bg-primary text-light">
+        <th class="text-center border-left">Data</th>
+        <th class="text-center border-left">Paciente</th>
+        <th class="text-center border-left">Prontuário</th>
+        <th class="text-center border-left">Total Score</th>
+        <th class="text-center border-left">Risco</th>
+        <th class="text-center border-left">Ações</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let registro of resources">
+        <td class="border-left text-center">
+          <strong>{{registro.data | date: 'dd/MM/yyyy'}}</strong>          
+        </td>
+        <td class="border-left ">
+          <strong>{{registro.paciente.nome}}</strong>          
+        </td>
+        <td class="border-left ">
+          <strong>{{registro.paciente.prontuario}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <strong>{{registro.totalScore}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <strong [ngClass]="registro.risco === 'Baixo' ? 'badge badge-primary' : 'badge badge-danger'">{{registro.risco}}</strong>          
+        </td>
+
+        <td class="text-center border-left">
+          <a [routerLink]="[registro.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+          <button (click)="deleteResource(registro)" class="btn btn-outline-danger btn-sm mr-2">Excluir</button>
+          <button (click)="recomendar(registro)" class="btn btn-outline-success btn-sm" 
+          data-toggle="modal" data-target="#recModalLong">Recomendações</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <!-- Modal -->
+<div class="modal fade" id="recModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Recomendações</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <table class="table table-hover">
+          <thead>
+            <tr class="bg-primary text-light">
+              <th class="text-center border-left">Região do Corpo</th>
+              <th class="text-center border-left">Recomendações</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr *ngFor="let reg of recomendacoes">
+              <td class="border-left ">
+                <strong>{{reg.regiaoCorpo}}</strong>          
+              </td>
+              <td class="border-left ">
+                <strong>{{reg.recomendacoes}}</strong>          
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

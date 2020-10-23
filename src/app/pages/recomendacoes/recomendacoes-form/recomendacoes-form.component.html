@@ -1,0 +1,59 @@
+<app-bread-crumb
+  [items]="[{text: 'Lista de Recomendações', link: '/recomendacoes'}, {text: pageTitle}]"
+></app-bread-crumb>
+
+<!-- precisou buscar do arqui.ts fazer protetbind [] ex: [page-title]="pageTitle" -->
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Voltar"
+  button-link="/recomendacoes"
+  button-class="btn-light"
+></app-page-header>
+  
+    <form [formGroup]="resourceForm" (submit)="submitForm()">
+      <div class="card">
+        <div class="card-header">
+          Informações sobre a recomendação
+        </div>
+
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="tpPosicaoCirurgica">Tipo de Posição Cirúrgica</label>
+              
+              <select name="tpPosicaoCirurgica" class="form-control" id="tpPosicaoCirurgica" formControlName="tpPosicaoCirurgica" [compareWith]="compararObjs">
+                <option *ngFor="let tpposc of litpPosCirurgica" [ngValue]="tpposc">{{tpposc.descricao}}</option>
+              </select>
+              
+              <app-form-fild-error [form-control]="resourceForm.get('tpPosicaoCirurgica')"></app-form-fild-error>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="regiaoCorpo">Região do Corpo</label>
+              <input type="text" class="form-control" id="regiaoCorpo" formControlName="regiaoCorpo">
+
+              <app-form-fild-error [form-control]="resourceForm.get('regiaoCorpo')"></app-form-fild-error>
+            </div>
+
+            <div class="form-group col-md-9">
+              <label for="recomendacoes">Recomendação</label>
+              <input type="text" class="form-control" id="recomendacoes" formControlName="recomendacoes">
+
+              <app-form-fild-error [form-control]="resourceForm.get('recomendacoes')"></app-form-fild-error>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
+
+      <button [disabled]="submittingForm || resourceForm.invalid" type="submit" 
+      class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
+  </form>
+  <br>
+
+  <!-- mostra o formulário em forma de json -->
+<!-- <pre>{{resourceForm.value | json}}</pre> -->

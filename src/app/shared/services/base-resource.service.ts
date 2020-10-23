@@ -44,6 +44,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
      * Autor: Alex Santos 
      */
     getAll(): Observable<T[]> {
+        console.log("Buscando de: "+ this.apiUrl);
         return this.http.get(this.apiUrl).pipe(
             map(this.jasonDataToRecursos.bind(this)),
             catchError(this.handleError)
@@ -58,6 +59,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
      */
     getById(id: number): Observable<T> {
         const url = `${this.apiUrl}/${id}`;
+        console.log("Buscando de: "+ url);
 
         return this.http.get(url).pipe(
             map(this.jasonDataToRecurso.bind(this)),
@@ -73,6 +75,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
      * @param recurso 
      */
     create(recurso: T): Observable<T> {
+        console.log("Crianno para: "+ this.apiUrl);
         return this.http.post(this.apiUrl, recurso).pipe(
             map(this.jasonDataToRecurso.bind(this)),
             catchError(this.handleError)
@@ -87,7 +90,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
      */
     update(recurso: T): Observable<T> {
         const url = `${this.apiUrl}/${recurso.id}`;
-
+        console.log("Editando para: "+ url);
         return this.http.put(url, recurso).pipe(
             map(() => recurso),
             catchError(this.handleError)
@@ -102,6 +105,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
      */
     delete(id: number): Observable<any> {
         const url = `${this.apiUrl}/${id}`;
+        console.log("Deletando para: "+ url);
         return this.http.delete(url).pipe(
             map(() => null),
             catchError(this.handleError)

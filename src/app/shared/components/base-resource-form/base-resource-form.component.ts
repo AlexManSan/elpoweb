@@ -56,6 +56,18 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         this.loadResource();      // carregando a categoria nos campos
     }
 
+  // get pacientefrm(): any {
+  //   return this.resourceForm.get('paciente');
+  // }
+
+  // setValoresPaciente(elpo: Elpo) {
+  //   this.resourceForm.setValue({
+  //     nome: elpo.paciente.nome,
+  //     idade: elpo.paciente.idade,
+  //     prontuario: elpo.paciente.prontuario,
+  //   });
+  // }
+
     /**
      * Este Método carrega depois das verificações padrões
      */
@@ -105,6 +117,10 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
                     (resource) => {
                         this.resource = resource;
                         this.resourceForm.patchValue(resource); // preenchendo o resourceForm com os dados do resource
+
+                        // console.warn("Todo o formulário: " + this.resourceForm.value);
+                        // console.log("Exibindo id com controls: " + this.resourceForm.controls['id'].value);
+                        // console.log("Exibindo id com get: " + this.resourceForm.get('id').value);
                     },
                     (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
                 );
@@ -212,4 +228,14 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
      * Autor: Alex Santos
      */
     protected abstract buildResourceForm(): void;
+
+    /**
+     * Usado para comparar objetos de uma combobox de obj
+     * Autor: Alex Santos
+     * @param obj1 
+     * @param obj2 
+     */
+    protected compararObjs(obj1, obj2){
+        return obj1 && obj2 ? obj1.id === obj2.id :obj1 === obj2;
+    }
 }

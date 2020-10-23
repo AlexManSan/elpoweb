@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="exibindoNavbar()"></app-navbar>
 
-<div class="container">
+<div [ngClass]="exibindoNavbar() ? 'container' : ''" >
   <router-outlet></router-outlet>
 </div>

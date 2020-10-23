@@ -13,8 +13,9 @@ import { Pmembro } from './pmembro.model';
 export class PmembroService extends BaseResourceService<Pmembro> {
 
   constructor(protected injector: Injector) {
-    // super('http://localhost:8080/elpo/rest/ipaciente', injector, Ipaciente.fromJson)
+    super('http://localhost:8080/pmembros', injector, Pmembro.fromJson)
+    // super('http://localhost:8080/elpo/rest/pmembros', injector, Pmembro.fromJson)
     // super('http://localhost:4200/api/elpo/rest/pmembros', injector, Pmembro.fromJson)
-    super('http://localhost:4200/api/pmembros', injector, Pmembro.fromJson)
+    // super('http://localhost:4200/api/pmembros', injector, Pmembro.fromJson)
    }
 }

@@ -1,0 +1,48 @@
+<app-bread-crumb
+  [items]="[{text: 'Lista de Pacientes', link: '/pacientes'}, {text: pageTitle}]"
+></app-bread-crumb>
+
+<!-- precisou buscar do arqui.ts fazer protetbind [] ex: [page-title]="pageTitle" -->
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Voltar"
+  button-link="/pacientes"
+  button-class="btn-light"
+></app-page-header>
+  
+    <form [formGroup]="resourceForm" (submit)="submitForm()">
+      <div class="card">
+        <div class="card-header">
+          Informações sobre um paciente
+        </div>
+
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nome" formControlName="nome">
+
+              <app-form-fild-error [form-control]="resourceForm.get('nome')"></app-form-fild-error>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="idade">Idade</label>
+              <input type="text" class="form-control" id="idade" formControlName="idade">
+
+              <app-form-fild-error [form-control]="resourceForm.get('idade')"></app-form-fild-error>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="prontuario">Prontuário</label>
+              <input type="text" class="form-control" id="prontuario" formControlName="prontuario">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
+
+      <button [disabled]="submittingForm || resourceForm.invalid" type="submit" 
+      class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
+    </form>

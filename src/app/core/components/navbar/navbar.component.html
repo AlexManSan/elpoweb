@@ -7,12 +7,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/reports">Relatórios</a>
-        </li> -->
-        <!-- <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/entries">Lançamentos</a>
-        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Itens Elpo
@@ -27,8 +21,20 @@
             
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/tpposcirurgicas">Tipo Posição Cirúrgica</a>
+            <a class="dropdown-item" routerLink="/recomendacoes">Recomendações</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/elpos">Registros da Elpo</a>
+            <a class="dropdown-item" routerLink="/elpos/pesq-elpo">Pesquisa Elpo</a>
+            <a class="dropdown-item" routerLink="/pacientes">Pacientes</a>
           </div>
         </li>
       </ul>
+    </div>
+
+    <div >
+      <button type="button" routerLink="/login" title="Sair" >
+        <span class="fa fa-sign-out-alt"></span>
+      </button>
     </div>
   </nav>

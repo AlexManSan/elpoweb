@@ -11,6 +11,7 @@
     <thead>
       <tr class="bg-primary text-light">
         <th class="text-center border-left">Tipo de Posição Cirúrgica</th>
+        <th class="text-center border-left">Imagem</th>
         <th class="text-center border-left">Score</th>
         <th class="text-center border-left">Ações</th>
       </tr>
@@ -20,6 +21,9 @@
       <tr *ngFor="let registro of resources">
         <td class="border-left">
           <strong>{{registro.descricao}}</strong>          
+        </td>
+        <td class="border-left text-center">
+          <img src="{{registro.img}}" width="90px"/>          
         </td>
         <td class="border-left text-center">
           <strong>{{registro.score}}</strong>          

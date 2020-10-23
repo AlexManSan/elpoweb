@@ -13,8 +13,9 @@ import { Tpanestesia } from './tpanestesia.model';
 export class TpanestesiaService extends BaseResourceService<Tpanestesia> {
 
   constructor(protected injector: Injector) {
+      super('http://localhost:8080/tpanestesias', injector, Tpanestesia.fromJson)
       // super('http://localhost:8080/elpo/rest/tpanestesias', injector, Tpanestesia.fromJson)
     // super('http://localhost:4200/api/elpo/rest/tpanestesias', injector, Tpanestesia.fromJson)
-    super('http://localhost:4200/api/tpanestesias', injector, Tpanestesia.fromJson)
+    // super('http://localhost:4200/api/tpanestesias', injector, Tpanestesia.fromJson)
    }
 }

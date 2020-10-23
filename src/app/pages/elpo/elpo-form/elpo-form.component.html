@@ -1,0 +1,133 @@
+<app-bread-crumb
+  [items]="[{text: 'Lista de registros ELPO', link: '/elpos'}, {text: pageTitle}]"
+></app-bread-crumb>
+
+<!-- precisou buscar do arqui.ts fazer protetbind [] ex: [page-title]="pageTitle" -->
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Voltar"
+  button-link="/elpos"
+  button-class="btn-light"
+></app-page-header>
+  
+    <form [formGroup]="resourceForm" (ngSubmit)="calculaTotalScoreESalva()">
+      <div class="card">
+        <div class="card-header">
+          Informações sobre a ELPO
+        </div>
+
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="data">Data</label>
+              <input type="date" class="form-control" id="data" formControlName="data" >
+              
+              <!-- <p-calendar 
+              id="data"
+              formControlName="data"
+              inputStyleClass="form-control"
+              dataType="string"
+              dateFormat="dd/MM/yyyy"
+              ></p-calendar> -->
+
+            </div>
+          </div>
+
+          <div class="form-row" formGroupName="paciente">
+            <div class="form-group col-md-6">
+              <label for="nomePaciente">Paciente</label>
+              <input type="text" class="form-control" id="nomePaciente" formControlName="nome">
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('paciente','nome')"></app-form-fild-error> -->
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="idadePaciente">Idade</label>
+              <input type="text" class="form-control" id="idadePaciente" formControlName="idade">
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('paciente','idade')"></app-form-fild-error> -->
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="prontuarioPaciente">Prontuário</label>
+              <input type="text" class="form-control" id="prontuarioPaciente" formControlName="prontuario">
+            </div>
+
+            
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="tpPosicaoCirurgica">Tipo de Posição Cirúrgica</label>
+              <select name="tpPosicaoCirurgica" class="form-control" id="tpPosicaoCirurgica" formControlName="tpPosicaoCirurgica" [compareWith]="compararObjs">
+                <option *ngFor="let reg of litpPosCirurgica" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('tpPosicaoCirurgica')"></app-form-fild-error> -->
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="tpCirurgia">Tempo de Cirurgia</label>
+              <select name="tpCirurgia" class="form-control" id="tpCirurgia" formControlName="tpCirurgia" [compareWith]="compararObjs">
+                <option *ngFor="let reg of litpCirurgia" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('tpCirurgia')"></app-form-fild-error> -->
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="tpAnestesia">Tipo de Anestesia</label>
+              <select name="tpAnestesia" class="form-control" id="tpAnestesia" formControlName="tpAnestesia" [compareWith]="compararObjs">
+                <option *ngFor="let reg of litpAnestesia" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <app-form-fild-error [form-control]="resourceForm.get('tpAnestesia')"></app-form-fild-error>
+            </div>
+
+            <div class="form-group col-md-8">
+              <label for="comorbidade">Comorbidade</label>
+              <select name="comorbidade" class="form-control" id="comorbidade" formControlName="comorbidade" [compareWith]="compararObjs">
+                <option *ngFor="let reg of licomorbidade" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('comorbidade')"></app-form-fild-error> -->
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="superficieSuporte">Superfície de Suporte</label>
+              <select name="superficieSuporte" class="form-control" id="superficieSuporte" formControlName="superficieSuporte" [compareWith]="compararObjs">
+                <option *ngFor="let reg of lisuperficieSuporte" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('superficieSuporte')"></app-form-fild-error> -->
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="posicaoMembros">Posição dos Membros</label>
+              <select name="posicaoMembros" class="form-control" id="posicaoMembros" formControlName="posicaoMembros" [compareWith]="compararObjs">
+                <option *ngFor="let reg of lisuperficieSuporte" [ngValue]="reg">{{reg.descricao}} - {{reg.score}}</option>
+              </select>
+
+              <!-- <app-form-fild-error [form-control]="resourceForm.get('posicaoMembros')"></app-form-fild-error> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
+
+      <button [disabled]="submittingForm || resourceForm.invalid" type="submit" 
+      class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
+    </form>
+    <br>
+
+<!-- mostra o formulário em forma de json -->
+<!-- <pre>{{resourceForm.value | json}}</pre> -->

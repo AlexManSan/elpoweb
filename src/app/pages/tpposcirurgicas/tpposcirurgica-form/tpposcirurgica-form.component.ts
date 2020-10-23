@@ -28,7 +28,8 @@ export class TpposcirurgicaFormComponent extends BaseResourceFormComponent<Tppos
     this.resourceForm = this.formBuilder.group({
       id: [null],
       descricao: [null, [Validators.required, Validators.minLength(3)]],
-      score: [null]
+      score: [null],
+      img: [null, [Validators.required]]
     });
   }
 

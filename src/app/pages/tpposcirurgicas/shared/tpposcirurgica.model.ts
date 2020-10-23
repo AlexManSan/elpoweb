@@ -4,7 +4,8 @@ export class Tpposcirurgica extends BaseResourceModel {
     constructor(
         id?: number,
         public descricao?: string,
-        public score?: number
+        public score?: number,
+        public img?: string
     ) { super(); }
 
     // metodo recebe um json e retorna uma nova instância da classe entry com os dados do json
